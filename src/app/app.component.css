@@ -1,0 +1,25 @@
+.parentContainer
+{
+    display: flex;
+    padding: 10px;
+}
+
+.listPart
+{
+    flex: 1;
+}
+
+.mapPart
+{
+    flex:1;
+}
+
+.listPart mat-card
+{
+    height: 98vh;
+    overflow: auto;
+}
+.mapPart mat-card
+{
+    height: 98vh;
+}

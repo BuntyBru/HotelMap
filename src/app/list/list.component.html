@@ -1,0 +1,13 @@
+<mat-card class="individualItem" *ngFor = 'let hotel of backService.hotelList'>
+
+  <div class="parentContainer">
+    <div class="imagePart">
+      <img src={{hotel.image}}/>
+    </div>
+    <div class="detailsPart">
+    {{hotel.rating}}
+    {{hotel.name}}
+    </div>
+
+  </div>
+</mat-card>
