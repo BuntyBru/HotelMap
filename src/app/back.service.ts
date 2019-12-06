@@ -23220,7 +23220,7 @@ positionList = () => {
     return {
       rating:x.rating,
       ratingCount:x.review_count,
-      cost_per_night:x.price_currency+x.price_formatted,
+      cost_per_night:x.price_currency+x.price_formatted + ' /night',
       name:x.name,
       locality:x.locality,
       wifi:x.amenities['wi-fi'],
