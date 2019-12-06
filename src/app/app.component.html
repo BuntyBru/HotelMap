@@ -1,7 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="parentContainer">
   <div class="listPart">
-      <mat-card >
+      <mat-card class="chipList">
+          <mat-chip-list>
+           <mat-chip class='btnSort' (click)="sorter('distance',true)" >Airport Distance</mat-chip>
+           <mat-chip class='btnSort' (click)="sorter('rating',false)" >Rating</mat-chip>
+           <mat-chip class='btnSort' (click)="sorter('price_value',true)" >Per Night Cost</mat-chip>
+          </mat-chip-list>
+        </mat-card>
+      <mat-card class="ListPartCard" >
         <app-list></app-list>
       </mat-card>
   </div>

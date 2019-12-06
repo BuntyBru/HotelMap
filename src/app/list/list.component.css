@@ -34,7 +34,18 @@
 
   .firstRow
   {
-      text-align: right;
+     display: flex;
+     flex-direction: row-reverse;
+  }
+  .firstRow p
+  {
+      margin: 0;
+      font-weight: 600;
+  }
+  .firstRow i
+  {
+    font-size: 22px;
+    color: #FF0056;
   }
 
   .fourthRow
@@ -56,4 +67,32 @@
   {
       font-size: 15px;
       color: gray;
+  }
+
+  .iconMaterial
+  {
+      color: gray;
+      padding-left: 4px;
+  }
+
+  .thirdRow
+  {
+      display: flex;
+  }
+
+  .airportDistance
+  {
+    display: flex;
+    border: 1px solid grey;
+    background: gray;
+    color: white;
+    border-radius: 20px;
+    padding-left: 4px;
+    padding-right: 6px;
+    margin-left: 4px;
+  }
+
+  .airportDistance p
+  {
+      margin: 0;
   }

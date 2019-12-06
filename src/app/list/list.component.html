@@ -1,3 +1,4 @@
+
 <mat-card class="individualItem" *ngFor = 'let hotel of backService.hotelList'>
 
   <div class="parentContainer">
@@ -6,7 +7,11 @@
     </div>
     <div class="detailsPart">
         <div class="firstRow">
-            {{hotel.rating}} ({{hotel.ratingCount}})
+            <p>{{hotel.rating}} ({{hotel.ratingCount}})</p> 
+            <i class="material-icons">
+                star
+                </i>  
+                
           </div>
           <div class="secondRow">
               {{hotel.name}}
@@ -15,9 +20,29 @@
             {{hotel.locality}}
 
           </div>
-          <div class="thirdRow">
-            {{hotel.wifi}} {{hotel.cancellation}}
-            </div> 
+          <div class="thirdRow" >
+            <div class="wifiIcon">
+                <i class="material-icons iconMaterial" *ngIf = hotel.wifi>
+                    wifi
+                  </i>
+                  <i class="material-icons iconMaterial" *ngIf=!hotel.wifi>
+                    wifi_off
+                  </i>
+            </div>
+          <div class="cancelIcon">
+              <i class="material-icons iconMaterial" *ngIf=hotel.cancellation >
+                  check_circle
+                  </i>
+                  <i class="material-icons iconMaterial" *ngIf=!hotel.cancellation>
+                    highlight_off
+                  </i>
+          </div>
+          <div class="airportDistance">
+                  <i class="material-icons">
+                         local_airport
+                   </i>  <p>{{hotel.distAirport}} </p>
+          </div>
+          </div> 
           <div class="fourthRow">
             {{hotel.cost_per_night}}
           </div>

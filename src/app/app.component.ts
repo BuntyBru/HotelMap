@@ -19,18 +19,20 @@ export class AppComponent implements OnInit {
   draggable: boolean;
   mapItems:any=[];
   hotelList:any=[];
+  
   constructor(private backService:BackService){}
 
   ngOnInit()
   {
     this.options = {
       center: {lat: 28.437868, lng: 77.0435},
-      zoom: 7
+      zoom: 10
   };
-  this.mapItems  = this.backService.positionMap()
+  
+  this.mapItems  = this.backService.positionMap(this.backService.dataJson)
   this.overlays = [];
   this.overlaysHandler();
-  this.backService.hotelList = this.backService.positionList();
+  this.backService.hotelList = this.backService.positionList(this.backService.dataJson);
   console.log(this.backService.hotelList[0]);
   }
 
@@ -39,6 +41,13 @@ export class AppComponent implements OnInit {
       return new google.maps.Marker(x);
     });
     this.overlays=allArray;
-    console.log(allArray);
+    console.log(this.mapItems);
   }
+
+  //all in one sorter
+  sorter=(keyVal,bool)=>{
+    let data = this.backService.getSort(keyVal,bool);
+    this.backService.hotelList= this.backService.positionList(data);
+  }
+
 }

@@ -7,6 +7,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatCardModule} from '@angular/material/card';
 import {GMapModule} from 'primeng/gmap';
 import { ListComponent } from './list/list.component';
+import {MatChipsModule} from '@angular/material/chips';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,7 @@ import { ListComponent } from './list/list.component';
     BrowserModule,
     BrowserAnimationsModule,
     MatSliderModule,
-    MatCardModule,GMapModule
+    MatCardModule,GMapModule,MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

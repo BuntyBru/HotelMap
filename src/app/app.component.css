@@ -14,12 +14,26 @@
     flex:1;
 }
 
-.listPart mat-card
+.ListPartCard
 {
-    height: 98vh;
+    height: 90vh;
     overflow: auto;
 }
 .mapPart mat-card
 {
     height: 98vh;
+}
+.btnSort
+{
+    background: white;
+    color: darkgray;
+    border: 2px solid darkgray;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.chipList
+{
+    padding:21px;
 }

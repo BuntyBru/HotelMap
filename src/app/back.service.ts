@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class BackService {
   hotelList:any=[];
   constructor() { }
+ 
   dataJson=[
          {
             "rating":3.0,
@@ -23202,32 +23203,67 @@ export class BackService {
             "request_id":"625e7752-25b6-4ee8-9b2c-3aba53383d62"
          }
       ];
-
-positionMap =()=>{
-  return this.dataJson.map((x)=>{
+pinSymbol(color) {
+        return {
+            path: 'M 0,0 C -2,-20 -10,-22 -10,-30 A 10,10 0 1,1 10,-30 C 10,-22 2,-20 0,0 z M -2,-30 a 2,2 0 1,1 4,0 2,2 0 1,1 -4,0',
+            fillColor: color,
+            fillOpacity: 1,
+            strokeColor: 'blueviolet',
+            strokeWeight: 4,
+            scale: 1,
+       };
+    }
+//Map overlay
+positionMap =(data)=>{
+  return data.map((x)=>{
     return {
       position:{
         lat:parseFloat(x.latitude),
-        lng:parseFloat(x.longitude)
+        lng:parseFloat(x.longitude),
       },
-      title:x.name
+      title:x.name,
+      icon:this.pinSymbol("coral"),
     }
   })
 }
 
-positionList = () => {
-  return this.dataJson.map((x)=>{
+//default Hotel Listing function
+positionList = (data) => {
+  return data.map((x)=>{
     return {
       rating:x.rating,
       ratingCount:x.review_count,
-      cost_per_night:x.price_currency+x.price_formatted + ' /night',
+      cost_per_night:'₹ '+x.price_formatted + ' /night',
       name:x.name,
       locality:x.locality,
       wifi:x.amenities['wi-fi'],
       cancellation:x.amenities['free-cancellation'],
-      image:x.images[0]
+      image:x.images[0],
+      distAirport:x.distance+x.distance_unit
     }
   })
+}
+
+//comparator function
+propComparator(prop,asc) {
+  if(!asc)
+  {
+      return function(a, b) {
+        return b[prop] - a[prop];
+      }
+  }
+  else
+  {
+      return function(a, b) {
+        return a[prop] - b[prop];
+      }
+  }
+  
+}
+
+//all in one sorting function
+getSort =(item,bool) =>{
+  return this.dataJson.sort(this.propComparator(item,bool));
 }
 
 }
