@@ -25,4 +25,16 @@
 
   img{
       width:100%;
+      height: 15vh;
+      border-radius: 10%;
+  }
+
+  .firstRow
+  {
+      text-align: right;
+  }
+
+  .fourthRow
+  {
+      text-align: right;
   }

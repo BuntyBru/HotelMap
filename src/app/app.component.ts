@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BackService} from './back.service';
 import {ListComponent} from './list/list.component';
+declare var google;
 
 @Component({
   selector: 'app-root',

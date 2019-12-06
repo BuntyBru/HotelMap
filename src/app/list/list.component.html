@@ -5,9 +5,23 @@
       <img src={{hotel.image}}/>
     </div>
     <div class="detailsPart">
-    {{hotel.rating}}
-    {{hotel.name}}
-    </div>
 
+        <div class="firstRow">
+            {{hotel.rating}} ({{hotel.ratingCount}})
+          </div>
+          <div class="secondRow">
+              {{hotel.name}}
+          </div>
+          <div class="addressRow">
+            {{hotel.locality}}
+
+          </div>
+          <div class="thirdRow">
+            {{hotel.wifi}} {{hotel.cancellation}}
+            </div> 
+          <div class="fourthRow">
+            {{hotel.cost_per_night}}
+          </div>
+  </div>
   </div>
 </mat-card>
