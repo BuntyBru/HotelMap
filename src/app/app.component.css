@@ -1,3 +1,4 @@
+
 .parentContainer
 {
     display: flex;
@@ -36,4 +37,99 @@
 .chipList
 {
     padding:21px;
+}
+
+.firstBlock
+{
+    display: flex;
+}
+
+.nameBlock
+{
+    flex: 1;
+}
+
+.nameBlock h2
+{
+    color: blueviolet;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 4px;
+}
+
+
+
+.starClass
+{
+    display:flex;
+    color: #FFC54B;
+}
+.starClass p
+{
+    margin:0;
+}
+.starClass span
+{
+padding-top: 4px;
+}
+
+.localityHotel
+{
+    margin: 0;
+    color: gray;
+}
+
+.amenities
+{
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.amenities p
+{
+    margin: 0;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid cornflowerblue;
+    margin-right: 5px;
+    background: cornflowerblue;
+    color: white;
+    margin-top:4px
+}
+
+.imagesDiv
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+.imagesDivChild
+{
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+
+.imagesDivChild img
+{
+    height: 200px;
+    width: 260px;
+    border-radius: 6%;
+}
+
+.detailsAboutHotel
+{
+    font-family: 'Poppins', sans-serif;
+}
+
+.perNightCost
+{
+    font-family: 'Bebas Neue', cursive;
+    position: absolute;
+    top: 38px;
+    padding: 7px;
+    right: 0;
+    margin-right: 50px;
+    font-size: 26px;
+    text-align: center;
+    background: burlywood;
 }

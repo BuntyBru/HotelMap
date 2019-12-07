@@ -9,6 +9,9 @@ export class BackService {
   imageArray:any=[]; 
   hotelDetails:any;
   detailsSection:boolean=false;
+  freeBf = 'free-bf';
+  wifi = 'wi-fi';
+  freeCan = 'free-cancellation';
   dataJson=[
          {
             "rating":3.0,
@@ -23278,6 +23281,14 @@ propComparator(prop,asc) {
 //all in one sorting function
 getSort =(item,bool) =>{
   return this.dataJson.sort(this.propComparator(item,bool));
+}
+
+generateRowIndexes(count: number){
+  let indexes = [];
+  for (let i = 0; i < count; i++) {
+  indexes.push(i);
+  }
+  return indexes;
 }
 
 }

@@ -16,11 +16,63 @@
       <div *ngIf=backService.detailsSection>
             <mat-card class="chipList">
                     <mat-chip-list>
-                     <mat-chip class='btnSort' (click)="goBack()" >Go back</mat-chip>
+                     <mat-chip class='btnSort' (click)="goBack()" ><i class="material-icons">
+                            arrow_back
+                            </i>
+                            Go Back
+                            </mat-chip>
                     </mat-chip-list>
                   </mat-card>
                 <mat-card class="ListPartCard">
-                  Hello
+                    <div class="parentDetails">
+                        <div class="firstBlock">
+                            <div class="nameBlock">
+                                    <h2>{{backService.hotelDetails[0].name}}</h2>
+                                    <div class="starClass">
+                                            <p *ngFor ='let i of backService.generateRowIndexes(backService.hotelDetails[0].rating)'>
+                                                    <i class="material-icons">
+                                                        star
+                                                    </i>
+                                                </p><span>({{backService.hotelDetails[0].review_count}} reviews)</span>
+                                    </div>
+                                    <p class="localityHotel">{{backService.hotelDetails[0].locality}}</p>
+                                    <div class="amenities">
+                                        <p *ngIf=backService.hotelDetails[0].amenities[backService.freeBf]>Free Breakfast</p>
+                                        <p *ngIf=backService.hotelDetails[0].amenities[backService.freeCan]>No cancellation charge</p>
+                                        <p *ngIf=backService.hotelDetails[0].amenities[backService.wifi]>Wifi</p>
+                                        <p>{{backService.hotelDetails[0].comfort_score}} comfort score</p>
+                                        <p>{{backService.hotelDetails[0].distance}} kms from Airport</p>
+                                    </div>
+
+                                    <div class="imagesDiv">
+                                        <div class="imagesDivChild" *ngFor = 'let items of backService.hotelDetails[0].images'>
+
+                                            <img alt='not available'src={{items}}/>
+
+                                        </div>
+                                    </div>
+                                    <div class="detailsAboutHotel">
+                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo sapiente sequi molestiae, 
+                                     labore quis eos, delectus consectetur tempora alias harum dolores, 
+                                     adipisci nemo facilis! Nostrum labore nihil voluptate voluptatem aperiam.
+                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo sapiente sequi molestiae, 
+                                     labore quis eos, delectus consectetur tempora alias harum dolores, 
+                                     adipisci nemo facilis! Nostrum labore nihil voluptate voluptatem aperiam.
+                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo sapiente sequi molestiae, 
+                                     labore quis eos, delectus consectetur tempora alias harum dolores, 
+                                     adipisci nemo facilis! Nostrum labore nihil voluptate voluptatem aperiam.
+                                    </div>
+
+                                    <div class="perNightCost">
+                                        ₹ {{backService.hotelDetails[0].price_value}}/Night
+                                    </div>
+                                  
+                                 
+                            </div>
+                        </div>
+                        
+
+                    </div>
                 </mat-card>
       </div>
      

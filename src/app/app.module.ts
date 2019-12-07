@@ -8,7 +8,7 @@ import {MatCardModule} from '@angular/material/card';
 import {GMapModule} from 'primeng/gmap';
 import { ListComponent } from './list/list.component';
 import {MatChipsModule} from '@angular/material/chips';
-
+import { StarRatingModule } from 'angular-star-rating';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import {MatChipsModule} from '@angular/material/chips';
     BrowserModule,
     BrowserAnimationsModule,
     MatSliderModule,
-    MatCardModule,GMapModule,MatChipsModule
+    MatCardModule,GMapModule,MatChipsModule,
+    StarRatingModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
