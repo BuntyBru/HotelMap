@@ -7,6 +7,8 @@ export class BackService {
   hotelList:any=[];
   constructor() { }
   imageArray:any=[]; 
+  hotelDetails:any;
+  detailsSection:boolean=false;
   dataJson=[
          {
             "rating":3.0,

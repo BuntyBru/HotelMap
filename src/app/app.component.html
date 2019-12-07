@@ -1,20 +1,33 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="parentContainer">
   <div class="listPart">
-      <mat-card class="chipList">
-          <mat-chip-list>
-           <mat-chip class='btnSort' (click)="sorter('distance',true)" >Airport Distance</mat-chip>
-           <mat-chip class='btnSort' (click)="sorter('rating',false)" >Rating</mat-chip>
-           <mat-chip class='btnSort' (click)="sorter('price_value',true)" >Per Night Cost</mat-chip>
-          </mat-chip-list>
-        </mat-card>
-      <mat-card class="ListPartCard" >
-        <app-list></app-list>
-      </mat-card>
+      <div *ngIf=!backService.detailsSection>
+            <mat-card class="chipList">
+                    <mat-chip-list>
+                     <mat-chip class='btnSort' (click)="sorter('distance',true)" >Airport Distance</mat-chip>
+                     <mat-chip class='btnSort' (click)="sorter('rating',false)" >Rating</mat-chip>
+                     <mat-chip class='btnSort' (click)="sorter('price_value',true)" >Per Night Cost</mat-chip>
+                    </mat-chip-list>
+                  </mat-card>
+                <mat-card class="ListPartCard">
+                  <app-list></app-list>
+                </mat-card>
+      </div>
+      <div *ngIf=backService.detailsSection>
+            <mat-card class="chipList">
+                    <mat-chip-list>
+                     <mat-chip class='btnSort' (click)="goBack()" >Go back</mat-chip>
+                    </mat-chip-list>
+                  </mat-card>
+                <mat-card class="ListPartCard">
+                  Hello
+                </mat-card>
+      </div>
+     
   </div>
   <div class="mapPart">
       <mat-card>
-          <p-gmap [options]="options"  [overlays]="overlays"  [style]="{'width':'100%','height':'92vh'}" ></p-gmap>
+          <p-gmap [options]="options"  [overlays]="overlays"  [style]="{'width':'100%','height':'92vh'}"  (onOverlayClick)="mapMarkerClick($event)" ></p-gmap>
       </mat-card>
   </div>
 

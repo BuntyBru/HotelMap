@@ -50,4 +50,23 @@ export class AppComponent implements OnInit {
     this.backService.hotelList= this.backService.positionList(data);
   }
 
+  //map marker click function
+  mapMarkerClick(event)
+  {
+    console.log("map marker was clicked",event.overlay.title);
+    this.backService.hotelDetails = this.backService.dataJson.filter((x)=>{
+      if(x.name == event.overlay.title)
+      {
+        return x;
+      } 
+    })
+    console.log(this.backService.hotelDetails);
+    this.backService.detailsSection=true;
+  }
+
+  goBack()
+  {
+    this.backService.detailsSection=false;
+  }
+
 }
