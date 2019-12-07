@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
       center: {lat: 28.437868, lng: 77.0435},
       zoom: 10
   };
-  
+  this.backService.costLabel();
   this.mapItems  = this.backService.positionMap(this.backService.dataJson)
   this.overlays = [];
   this.overlaysHandler();
