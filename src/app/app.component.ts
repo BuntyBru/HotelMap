@@ -33,12 +33,11 @@ export class AppComponent implements OnInit {
       zoom: 13,
       scrollwheel: false
   };
-  this.backService.costLabel();
-  this.backService.mapItems  = this.backService.positionMap(this.backService.dataJson)
-  this.backService.overlays = this.backService.overlaysHandler();
+  this.backService.costLabel(this.backService.dataJson);
+  //this.backService.mapItems  = this.backService.positionMap(this.backService.dataJson)
+  //this.backService.overlays = this.backService.overlaysHandler();
   this.backService.hotelList = this.backService.positionList(this.backService.dataJson);
   console.log(this.backService.hotelList[0]);
- 
   }
 
   overlaysHandler = () => {
@@ -98,9 +97,10 @@ export class AppComponent implements OnInit {
     this.backService.bounds = event.map.getBounds();
     this.backService.ne = this.backService.bounds.getNorthEast(); // LatLng of the north-east corner
     this.backService.sw = this.backService.bounds.getSouthWest(); // LatLng of the south-west corder
-    console.log("this is it.......");
+    console.log("this is it.......",this.mapCurrent.center.lat(), this.mapCurrent.center.lng());
     console.log("NE====>",this.backService.ne.lat(),this.backService.ne.lng());
     console.log("SW==>",this.backService.sw.lat(),this.backService.sw.lng());
+    this.backService.newEntries(this.mapCurrent.center, this.backService.ne, this.backService.sw);
     } ,1000) 
   }
 
