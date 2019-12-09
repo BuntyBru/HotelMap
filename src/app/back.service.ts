@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
-
+declare var google;
 @Injectable({
   providedIn: 'root'
 })
+
 export class BackService {
   hotelList:any=[];
   constructor() { }
   imageArray:any=[]; 
   hotelDetails:any;
+  bounds:any;
+  sw:any;
+  ne:any;
+  mapItems:any=[];
+  overlays:any=[];
   detailsSection:boolean=false;
   freeBf = 'free-bf';
   wifi = 'wi-fi';
@@ -23228,6 +23234,16 @@ costLabel = () => {
     return 'data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2038%2038%22%3E%3Cpath%20fill%3D%22%234B0082%22%20stroke%3D%22%23ccc%22%20stroke-width%3D%22.5%22%20d%3D%22M34.305%2016.234c0%208.83-15.148%2019.158-15.148%2019.158S3.507%2025.065%203.507%2016.1c0-8.505%206.894-14.304%2015.4-14.304%208.504%200%2015.398%205.933%2015.398%2014.438z%22%2F%3E%3Ctext%20transform%3D%22translate%2819%2018.5%29%22%20fill%3D%22%23fff%22%20style%3D%22font-family%3A%20Arial%2C%20sans-serif%3Bfont-weight%3Abold%3Btext-align%3Acenter%3B%22%20font-size%3D%2209%22%20text-anchor%3D%22middle%22%3E' +'₹'+ x.price_value + '%3C%2Ftext%3E%3C%2Fsvg%3E';
   });
 }
+
+//Map Marker Function
+overlaysHandler = () => {
+  let allArray = this.mapItems.map((x)=>{
+    return new google.maps.Marker(x);
+  });
+  this.overlays=allArray;
+  console.log(this.mapItems);
+  return allArray;
+}
     
 //Map overlay
 positionMap =(data)=>{
@@ -23243,6 +23259,8 @@ positionMap =(data)=>{
     }
   })
 }
+
+
 
 //default Hotel Listing function
 positionList = (data) => {
@@ -23290,5 +23308,51 @@ generateRowIndexes(count: number){
   }
   return indexes;
 }
+
+//new set of entries in maps with respect to changes(zoom or drag)
+newEntries(center,NE,SW)
+{
+  //console.log("the new entries will be based on these",center.lat(),center.lng());
+  //console.log("the new entries will be based on these",NE.lat(),NE.lng());
+  //console.log("the new entries will be based on these",SW.lat(),SW.lng());
+  this.hotelList = this.dataJson.filter((x)=>{
+    if(x.latitude<NE.lat() && x.longitude < NE.lng() && x.latitude > SW.lat() && x.longitude >SW.lng())
+    {
+      return x;
+    }    
+  }).map((x)=>{
+    return {
+      rating:x.rating,
+      ratingCount:x.review_count,
+      cost_per_night:'₹ '+x.price_formatted + ' /night',
+      name:x.name,
+      locality:x.locality,
+      wifi:x.amenities['wi-fi'],
+      cancellation:x.amenities['free-cancellation'],
+      image:x.images[0],
+      distAirport:x.distance+x.distance_unit
+    }
+  });
+  //console.log(this.hotelList);
+
+  this.mapItems = this.dataJson.filter((x)=>{
+    if(x.latitude<NE.lat() && x.longitude < NE.lng() && x.latitude > SW.lat() && x.longitude >SW.lng())
+    {
+      return x;
+    }    
+  }).map((x,index)=>{
+    return {
+      position:{
+        lat:parseFloat(x.latitude),
+        lng:parseFloat(x.longitude),
+      },
+      title:x.name,
+      //icon:this.pinSymbol("coral"),
+      icon:this.imageArray[index]
+    }
+  });
+  this.overlaysHandler();
+}
+
 
 }
