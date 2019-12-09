@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BackService} from './back.service';
 import {ListComponent} from './list/list.component';
-import { reject } from 'q';
-import { resolve } from 'path';
 declare var google;
 declare var map;
 
