@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
   {
     this.options = {
       center: {lat: 28.437868, lng: 77.0435},
-      zoom: 13,
+      zoom: 14,
       scrollwheel: false
   };
   this.backService.costLabel(this.backService.dataJson);
