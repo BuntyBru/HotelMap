@@ -23310,17 +23310,33 @@ generateRowIndexes(count: number){
 }
 
 //new set of entries in maps with respect to changes(zoom or drag)
-newEntries(center,NE,SW)
+newEntries(center,NE,SW,zoom)
 {
   //console.log("the new entries will be based on these",center.lat(),center.lng());
   //console.log("the new entries will be based on these",NE.lat(),NE.lng());
   //console.log("the new entries will be based on these",SW.lat(),SW.lng());
-  let newDataJson = this.dataJson.filter((x)=>{
+  let newDataJson;
+  if(zoom <= 13)
+  {
+    console.log("there should be twenty items showing in the newJSON");
+    newDataJson = this.dataJson.filter((x)=>{
+      if(x.latitude<NE.lat() && x.longitude < NE.lng() && x.latitude > SW.lat() && x.longitude >SW.lng())
+      {
+        return x;
+      }   
+    })
+    newDataJson=newDataJson.sort( function() { return 0.5 - Math.random() } );
+    newDataJson = newDataJson.slice(0,20);
+
+  }
+  else
+  {
+   newDataJson = this.dataJson.filter((x)=>{
     if(x.latitude<NE.lat() && x.longitude < NE.lng() && x.latitude > SW.lat() && x.longitude >SW.lng())
     {
       return x;
     }   
-  })
+  })}
   this.hotelList = newDataJson.map((x)=>{
     return {
       rating:x.rating,

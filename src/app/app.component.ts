@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
   {
     this.options = {
       center: {lat: 28.437868, lng: 77.0435},
-      zoom: 14,
+      zoom: 13,
       scrollwheel: false
   };
   this.backService.costLabel(this.backService.dataJson);
@@ -82,7 +82,7 @@ export class AppComponent implements OnInit {
     console.log("Center====>",this.mapCurrent.center.lat(),this.mapCurrent.center.lng());
     console.log("NE====>",this.backService.ne.lat(),this.backService.ne.lng());
     console.log("SW==>",this.backService.sw.lat(),this.backService.sw.lng());
-    this.backService.newEntries(this.mapCurrent.center, this.backService.ne, this.backService.sw);
+    this.backService.newEntries(this.mapCurrent.center, this.backService.ne, this.backService.sw,this.mapCurrent.zoom);
   }
 
 
@@ -98,7 +98,7 @@ export class AppComponent implements OnInit {
     console.log("this is it.......",this.mapCurrent.center.lat(), this.mapCurrent.center.lng());
     console.log("NE====>",this.backService.ne.lat(),this.backService.ne.lng());
     console.log("SW==>",this.backService.sw.lat(),this.backService.sw.lng());
-    this.backService.newEntries(this.mapCurrent.center, this.backService.ne, this.backService.sw);
+    this.backService.newEntries(this.mapCurrent.center, this.backService.ne, this.backService.sw,this.mapCurrent.zoom);
     } ,1000) 
   }
 
@@ -109,7 +109,7 @@ export class AppComponent implements OnInit {
 
  onMapZoom(event)
  {
-   console.log("map was zoomed ==>",this.options.center);
+   console.log("map was zoomed ==>",this.options.center,this.mapCurrent.zoom);
    this.boundFind();
  }
 
