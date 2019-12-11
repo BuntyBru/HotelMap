@@ -80,9 +80,9 @@
   <div class="mapPart">
       <mat-card>
           <p-gmap #gmap [options]="options"  
+          (onMapReady)="seeIT($event)"
           [overlays]="backService.overlays"  
           [style]="{'width':'100%','height':'92vh'}" 
-          (onMapReady)="seeIT($event,gmap.getMap())"  
           (onOverlayClick)="mapMarkerClick($event)" 
           (onMapDragEnd)="handleMapClick($event, gmap.getMap())"
           (onZoomChanged) = "onMapZoom($event)"

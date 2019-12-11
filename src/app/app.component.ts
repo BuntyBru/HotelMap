@@ -87,11 +87,11 @@ export class AppComponent implements OnInit {
 
 
   //function to handle the map Ready event in Gmaps
-  seeIT(event,gmap)
+  seeIT(event)
   {
-    console.log("CCDDFFF",event.map,gmap);
+    console.log("CCDDFFF",event.map);
     this.mapCurrent = event.map;
-    return setTimeout(()=>{
+    setTimeout(()=>{
     this.backService.bounds = event.map.getBounds();
     this.backService.ne = this.backService.bounds.getNorthEast(); // LatLng of the north-east corner
     this.backService.sw = this.backService.bounds.getSouthWest(); // LatLng of the south-west corder
@@ -99,7 +99,7 @@ export class AppComponent implements OnInit {
     console.log("NE====>",this.backService.ne.lat(),this.backService.ne.lng());
     console.log("SW==>",this.backService.sw.lat(),this.backService.sw.lng());
     this.backService.newEntries(this.mapCurrent.center, this.backService.ne, this.backService.sw,this.mapCurrent.zoom);
-    } ,1000) 
+    } ,1000);
   }
 
   handleMapClick(event,gmap) {
